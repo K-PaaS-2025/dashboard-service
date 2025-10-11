@@ -35,3 +35,12 @@ out/
 
 ### VS Code ###
 .vscode/
+
+## instruction files ##
+*.md
+!README.md
+*claude*
+*.claude
+*.jsonl
+*.prompt
+*.conversation
