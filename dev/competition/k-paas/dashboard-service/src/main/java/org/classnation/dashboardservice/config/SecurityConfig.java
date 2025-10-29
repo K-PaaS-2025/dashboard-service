@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/api/dashboard/**").authenticated()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/scalar/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(adminAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
