@@ -46,7 +46,7 @@ public class UserServiceClient {
                             response -> Mono.error(new ForbiddenException("Insufficient permissions"))
                     )
                     .onStatus(
-                            HttpStatus::isError,
+                            status -> status.isError(),
                             response -> Mono.error(new ExternalServiceException("User service error"))
                     )
                     .bodyToMono(VerifyTokenResponse.class)

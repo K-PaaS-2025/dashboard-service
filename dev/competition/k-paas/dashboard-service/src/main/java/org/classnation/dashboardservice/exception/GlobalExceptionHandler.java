@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Validation error: {}", requestId, ex.getMessage());
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 400,
                 "Validation Error",
                 "VALIDATION_ERROR",
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
 
         log.error("[{}] Method argument validation error: {}", requestId, errorDetails);
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 400,
                 "Invalid Request Parameters",
                 "INVALID_PARAMETERS",
@@ -64,7 +64,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Unauthorized: {}", requestId, ex.getMessage());
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 401,
                 "Unauthorized",
                 "AUTHENTICATION_FAILED",
@@ -80,7 +80,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Forbidden: {}", requestId, ex.getMessage());
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 403,
                 "Forbidden",
                 "INSUFFICIENT_PERMISSIONS",
@@ -96,7 +96,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Resource not found: {}", requestId, ex.getMessage());
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 404,
                 "Resource Not Found",
                 "RESOURCE_NOT_FOUND",
@@ -112,7 +112,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Conflict: {}", requestId, ex.getMessage());
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 409,
                 "Conflict",
                 "STATE_CONFLICT",
@@ -128,7 +128,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] External service error: {}", requestId, ex.getMessage(), ex);
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 502,
                 "External Service Error",
                 "EXTERNAL_SERVICE_FAILURE",
@@ -144,7 +144,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Service unavailable: {}", requestId, ex.getMessage(), ex);
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 503,
                 "Service Unavailable",
                 "SERVICE_UNAVAILABLE",
@@ -160,7 +160,7 @@ public class GlobalExceptionHandler {
         String requestId = generateRequestId();
         log.error("[{}] Unexpected error: {}", requestId, ex.getMessage(), ex);
 
-        ApiResponse<Void> response = ApiResponse.error(
+        ApiResponse<Void> response = ApiResponse.<Void>error(
                 500,
                 "Internal Server Error",
                 "INTERNAL_ERROR",

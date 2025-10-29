@@ -42,7 +42,7 @@ public class ReportServiceClient {
                     .bodyValue(request)
                     .retrieve()
                     .onStatus(
-                            HttpStatus::isError,
+                            status -> status.isError(),
                             response -> Mono.error(new ExternalServiceException("Report service error"))
                     )
                     .bodyToMono(Void.class)
@@ -71,7 +71,7 @@ public class ReportServiceClient {
                     .bodyValue(request)
                     .retrieve()
                     .onStatus(
-                            HttpStatus::isError,
+                            status -> status.isError(),
                             response -> Mono.error(new ExternalServiceException("Report service error"))
                     )
                     .bodyToMono(Void.class)
@@ -99,7 +99,7 @@ public class ReportServiceClient {
                     .uri(reportServiceUrl + "/report-service/matching/seniors/" + humanUuid + "?top=" + top)
                     .retrieve()
                     .onStatus(
-                            HttpStatus::isError,
+                            status -> status.isError(),
                             response -> Mono.error(new ExternalServiceException("Report service error"))
                     )
                     .bodyToMono(MatchingCandidatesResponse.class)
@@ -128,7 +128,7 @@ public class ReportServiceClient {
                     .bodyValue(request)
                     .retrieve()
                     .onStatus(
-                            HttpStatus::isError,
+                            status -> status.isError(),
                             response -> Mono.error(new ExternalServiceException("Report service error"))
                     )
                     .bodyToMono(ReportServiceConfirmAdoptionResponse.class)
@@ -157,7 +157,7 @@ public class ReportServiceClient {
                     .uri(reportServiceUrl + "/report-service/reports/" + humanUuid + "?is_danger=true&limit=1&sort=created_at:desc")
                     .retrieve()
                     .onStatus(
-                            HttpStatus::isError,
+                            status -> status.isError(),
                             response -> Mono.error(new ExternalServiceException("Report service error"))
                     )
                     .bodyToMono(LatestDangerResponse.class)
